@@ -2,6 +2,7 @@ import { checkArgCount, COMMANDS } from "../utils/command-input.js";
 import { printColoredText } from "../utils/color-output.js";
 import { printFarewellMessage } from '../utils/user.js';
 import { printCurrentDirectory } from "../utils/directory-path.js";
+import { up } from "./navigation/up.js";
 
 export const handleInput = async (line) => {
     try {
@@ -17,9 +18,9 @@ export const handleInput = async (line) => {
                 printFarewellMessage();
                 process.exit(0);
                 break;
-            // case COMMANDS.UP.name:
-            //     up();
-            //     break;
+            case COMMANDS.UP.name:
+                up();
+                break;
             // case COMMANDS.CD.name:
             //     cd(args);
             //     break;
