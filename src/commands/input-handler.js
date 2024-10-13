@@ -1,8 +1,10 @@
+import { EOL } from 'os';
 import { checkArgCount, COMMANDS } from "../utils/command-input.js";
 import { printColoredText } from "../utils/color-output.js";
 import { printFarewellMessage } from '../utils/user.js';
 import { printCurrentDirectory } from "../utils/directory-path.js";
 import { up } from "./navigation/up.js";
+import { cd } from './navigation/cd.js';
 
 export const handleInput = async (line) => {
     try {
@@ -21,9 +23,9 @@ export const handleInput = async (line) => {
             case COMMANDS.UP.name:
                 up();
                 break;
-            // case COMMANDS.CD.name:
-            //     cd(args);
-            //     break;
+            case COMMANDS.CD.name:
+                cd(args);
+                break;
             // case COMMANDS.LS.name:
             //     await ls();
             //     break;
