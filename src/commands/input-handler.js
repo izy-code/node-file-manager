@@ -5,6 +5,7 @@ import { printFarewellMessage } from '../utils/user.js';
 import { printCurrentDirectory } from "../utils/directory-path.js";
 import { up } from "./navigation/up.js";
 import { cd } from './navigation/cd.js';
+import { ls } from './navigation/ls.js';
 
 export const handleInput = async (line) => {
     try {
@@ -26,9 +27,9 @@ export const handleInput = async (line) => {
             case COMMANDS.CD.name:
                 cd(args);
                 break;
-            // case COMMANDS.LS.name:
-            //     await ls();
-            //     break;
+            case COMMANDS.LS.name:
+                await ls();
+                break;
             // case COMMANDS.CAT.name:
             //     await cat(args);
             //     break;
