@@ -26,7 +26,7 @@ export const trimQuotes = (path) => {
 };
 
 export const getArgByNumber = (args, number) => {
-    let argument = args[argNumber] || '';
+    let argument = args[number] || '';
 
     return trimQuotes(argument);
 };
