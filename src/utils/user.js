@@ -1,3 +1,4 @@
+import { EOL } from 'os';
 import { getColoredText } from "./color-output.js";
 
 const USERNAME_ARG = 'username';
@@ -18,7 +19,7 @@ const getUsername = () => {
 
 export const printWelcomeMessage = () => {
     const username = getUsername();
-    const coloredUsername = getColoredText('green', username);
+    const coloredUsername = getColoredText('GREEN', username);
 
     if (username === DEFAULT_USERNAME) {
         console.log('No username specified. Using default username: %s.', coloredUsername);
@@ -28,7 +29,7 @@ export const printWelcomeMessage = () => {
 }
 
 export const printFarewellMessage = () => {
-    const coloredUsername = getColoredText('green', getUsername());
+    const coloredUsername = getColoredText('GREEN', getUsername());
 
-    console.log('Thank you for using File Manager, %s, goodbye!', coloredUsername);
+    console.log(`${EOL}Thank you for using File Manager, ${coloredUsername}, goodbye!`);
 }
