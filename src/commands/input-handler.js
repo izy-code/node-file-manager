@@ -7,6 +7,7 @@ import { up } from "./navigation/up.js";
 import { cd } from './navigation/cd.js';
 import { ls } from './navigation/ls.js';
 import { cat } from './file-system/cat.js';
+import { add } from './file-system/add.js';
 
 export const handleInput = async (line) => {
     try {
@@ -34,9 +35,9 @@ export const handleInput = async (line) => {
             case COMMANDS.CAT.name:
                 await cat(args);
                 break;
-            // case COMMANDS.ADD.name:
-            //     await add(args);
-            //     break;
+            case COMMANDS.ADD.name:
+                await add(args);
+                break;
             // case COMMANDS.RN.name:
             //     await rn(args);
             //     break;
