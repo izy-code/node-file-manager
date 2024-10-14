@@ -9,6 +9,7 @@ import { ls } from './navigation/ls.js';
 import { cat } from './file-system/cat.js';
 import { add } from './file-system/add.js';
 import { rn } from './file-system/rn.js';
+import { cp } from './file-system/cp.js';
 
 export const handleInput = async (line) => {
     try {
@@ -42,9 +43,9 @@ export const handleInput = async (line) => {
             case COMMANDS.RN.name:
                 await rn(args);
                 break;
-            // case COMMANDS.CP.name:
-            //     await cp(args);
-            //     break;
+            case COMMANDS.CP.name:
+                await cp(args);
+                break;
             // case COMMANDS.MV.name:
             //     await mv(args);
             //     break;
