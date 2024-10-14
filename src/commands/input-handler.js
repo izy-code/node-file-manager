@@ -11,6 +11,7 @@ import { add } from './file-system/add.js';
 import { rn } from './file-system/rn.js';
 import { cp } from './file-system/cp.js';
 import { rm } from './file-system/rm.js';
+import { mv } from './file-system/mv.js';
 
 export const handleInput = async (line) => {
     try {
@@ -47,9 +48,9 @@ export const handleInput = async (line) => {
             case COMMANDS.CP.name:
                 await cp(args);
                 break;
-            // case COMMANDS.MV.name:
-            //     await mv(args);
-            //     break;
+            case COMMANDS.MV.name:
+                await mv(args);
+                break;
             case COMMANDS.RM.name:
                 await rm(args);
                 break;
