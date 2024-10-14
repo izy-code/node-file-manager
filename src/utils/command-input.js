@@ -1,4 +1,5 @@
 import { EOL } from 'os';
+import { access } from "fs/promises";
 
 export const COMMANDS = {
     EXIT: { name: '.exit', argCount: 0 },
@@ -42,5 +43,15 @@ export const checkArgCount = (inputCommandName, args) => {
         if (args.length !== expectedArgCount) {
             throw new Error(`Invalid input.${EOL}Command "${inputCommandName}" requires ${expectedArgCount} argument(s).`);
         }
+    }
+};
+
+export const isPathAccessible = async path => {
+    try {
+        await access(path);
+
+        return true;
+    } catch {
+        return false;
     }
 };

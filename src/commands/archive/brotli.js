@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import { createReadStream, createWriteStream } from 'fs';
 import { pipeline } from 'stream/promises';
 import { createBrotliCompress, createBrotliDecompress } from 'zlib';
-import { getArgByNumber } from "../../utils/command-input.js";
+import { getArgByNumber, isPathAccessible } from "../../utils/command-input.js";
 import { getCurrentDir } from '../../utils/directory-path.js';
 
 export const useBrotli = async (args, isCompress = true) => {
@@ -12,6 +12,10 @@ export const useBrotli = async (args, isCompress = true) => {
 
     const resolvedSourcePath = resolve(getCurrentDir(), sourceArgPath);
     const resolvedDestDirPath = resolve(getCurrentDir(), destArgPath);
+
+    if (!(await isPathAccessible(resolvedSourcePath))) {
+        throw new Error("Source path is not accessible.");
+    }
 
     const readStream = createReadStream(resolvedSourcePath);
     const brotliStream = isCompress ? createBrotliCompress() : createBrotliDecompress();
