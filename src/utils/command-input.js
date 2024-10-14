@@ -21,7 +21,7 @@ export const trimQuotes = (path) => {
     if (!path) {
         return '';
     } else {
-        return path.trim().replace(/^[`"']|[`"']$/g, '');
+        return path.trim().replace(/^"|"$/g, '');
     }
 };
 

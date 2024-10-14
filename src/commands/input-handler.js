@@ -18,7 +18,7 @@ import { useBrotli } from './archive/brotli.js';
 
 export const handleInput = async (line) => {
     try {
-        const args = line.match(/([`"']).*?\1|\S+/g) || [];
+        const args = line.match(/(").*?\1|\S+/g) || [];
         const command = args.shift();
 
         checkArgCount(command, args);
