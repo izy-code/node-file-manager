@@ -11,6 +11,11 @@ const init = () => {
         prompt: getColoredText('BLUE', '> '),
     });
 
+    const readlineClose = () => {
+        readline.close();
+        process.exit(0);
+    };
+
     printWelcomeMessage();
     setStartingDir();
     printCurrentDirectory();
@@ -18,7 +23,7 @@ const init = () => {
 
     readline.on('close', printFarewellMessage);
     readline.on('line', async (input) => {
-        await handleInput(input);
+        await handleInput(input, readlineClose);
         readline.prompt();
     });
 };

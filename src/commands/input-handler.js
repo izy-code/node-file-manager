@@ -1,7 +1,6 @@
 import { EOL } from 'os';
 import { checkArgCount, COMMANDS } from "../utils/command-input.js";
 import { printColoredText } from "../utils/color-output.js";
-import { printFarewellMessage } from '../utils/user.js';
 import { printCurrentDirectory } from "../utils/directory-path.js";
 import { up } from "./navigation/up.js";
 import { cd } from './navigation/cd.js';
@@ -16,7 +15,7 @@ import { executeOsCommand } from './os/os.js';
 import { calculateHash } from './hash/hash.js';
 import { useBrotli } from './archive/brotli.js';
 
-export const handleInput = async (line) => {
+export const handleInput = async (line, readlineClose) => {
     try {
         const args = line.match(/(").*?\1|\S+/g) || [];
         const command = args.shift();
@@ -27,8 +26,7 @@ export const handleInput = async (line) => {
             case undefined:
                 break;
             case COMMANDS.EXIT.name:   
-                printFarewellMessage();
-                process.exit(0);
+                readlineClose();
                 break;
             case COMMANDS.UP.name:
                 up();
