@@ -1,0 +1,12 @@
+{
+  "name": "node-file-manager",
+  "version": "1.0.0",
+  "description": "RS School Node.js course task 2: File manager",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "Izy",
+  "license": "ISC"
+}
