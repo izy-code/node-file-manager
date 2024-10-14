@@ -12,6 +12,7 @@ import { rn } from './file-system/rn.js';
 import { cp } from './file-system/cp.js';
 import { rm } from './file-system/rm.js';
 import { mv } from './file-system/mv.js';
+import { executeOsCommand } from './os/os.js';
 
 export const handleInput = async (line) => {
     try {
@@ -54,9 +55,9 @@ export const handleInput = async (line) => {
             case COMMANDS.RM.name:
                 await rm(args);
                 break;
-            // case COMMANDS.OS.name:
-            //     os(args);
-            //     break;
+            case COMMANDS.OS.name:
+                executeOsCommand(args);
+                break;
             // case COMMANDS.HASH.name:
             //     await hash(args);
             //     break;
