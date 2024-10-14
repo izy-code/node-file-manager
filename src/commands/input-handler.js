@@ -14,6 +14,7 @@ import { rm } from './file-system/rm.js';
 import { mv } from './file-system/mv.js';
 import { executeOsCommand } from './os/os.js';
 import { calculateHash } from './hash/hash.js';
+import { useBrotli } from './archive/brotli.js';
 
 export const handleInput = async (line) => {
     try {
@@ -62,12 +63,12 @@ export const handleInput = async (line) => {
             case COMMANDS.HASH.name:
                 await calculateHash(args);
                 break;
-            // case COMMANDS.COMPRESS.name:
-            //     await compress(args);
-            //     break;
-            // case COMMANDS.DECOMPRESS.name:
-            //     await decompress(args);
-            //     break;
+            case COMMANDS.COMPRESS.name:
+                await useBrotli(args);
+                break;
+            case COMMANDS.DECOMPRESS.name:
+                await useBrotli(args, false);
+                break;
             default:
                 printColoredText('RED', `Invalid input. Command "${command}" not supported.`);
                 break;
